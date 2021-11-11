@@ -2,6 +2,8 @@ package algorithms.sort;
 
 import edu.princeton.cs.algs4.StdIn;
 
+import java.util.Arrays;
+
 /**
  * @author mourenZhu
  * @version 1.0
@@ -15,10 +17,10 @@ public class Merge extends Sort {
     /**
      * 将a[lo...mid]和a[mid+1...hi]归并
      *
-     * @param a
-     * @param lo
-     * @param mid
-     * @param hi
+     * @param a 数组
+     * @param lo 最小值
+     * @param mid 中间值
+     * @param hi 最大值
      */
     public static void merge(Comparable[] a, int lo, int mid, int hi) {
         int i = lo, j = mid + 1;
@@ -45,7 +47,7 @@ public class Merge extends Sort {
     }
 
     public static void sort(Comparable[] a) {
-        aux = new Comparable[a.length - 1];
+        aux = new Comparable[a.length];
         sort(a, 0, a.length - 1);
     }
 
@@ -64,7 +66,7 @@ public class Merge extends Sort {
 
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
-        System.out.println(a);
+        System.out.println(Arrays.toString(a));
         sort(a);
         assert isSorted(a);
         show(a);
