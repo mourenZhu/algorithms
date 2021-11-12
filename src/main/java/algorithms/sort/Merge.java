@@ -1,26 +1,22 @@
 package algorithms.sort;
 
-import edu.princeton.cs.algs4.StdIn;
-
-import java.util.Arrays;
-
 /**
  * @author mourenZhu
  * @version 1.0
- * @description 归并排序
- * @date 2021/11/11 15:24
+ * @description todo
+ * @date 2021/11/12 20:12
  **/
-public class Merge extends Sort {
+public abstract class Merge extends Sort {
 
-    private static Comparable[] aux;
+    protected static Comparable[] aux;
 
     /**
      * 将a[lo...mid]和a[mid+1...hi]归并
      *
-     * @param a 数组
-     * @param lo 最小值
+     * @param a   数组
+     * @param lo  最小值
      * @param mid 中间值
-     * @param hi 最大值
+     * @param hi  最大值
      */
     public static void merge(Comparable[] a, int lo, int mid, int hi) {
         int i = lo, j = mid + 1;
@@ -44,31 +40,5 @@ public class Merge extends Sort {
                 a[k] = aux[i++];
             }
         }
-    }
-
-    public static void sort(Comparable[] a) {
-        aux = new Comparable[a.length];
-        sort(a, 0, a.length - 1);
-    }
-
-    private static void sort(Comparable[] a, int lo, int hi) {
-        if (hi <= lo) {
-            return;
-        }
-        int mid = lo + (hi - lo) / 2;
-        // 左半边排序
-        sort(a, lo, mid);
-        // 右半边排序
-        sort(a, mid + 1, hi);
-        // 归并
-        merge(a, lo, mid, hi);
-    }
-
-    public static void main(String[] args) {
-        String[] a = StdIn.readAllStrings();
-        System.out.println(Arrays.toString(a));
-        sort(a);
-        assert isSorted(a);
-        show(a);
     }
 }
