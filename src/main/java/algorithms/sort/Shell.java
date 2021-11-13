@@ -2,6 +2,8 @@ package algorithms.sort;
 
 import edu.princeton.cs.algs4.StdIn;
 
+import java.util.Arrays;
+
 /**
  * @author mourenZhu
  * @version 1.0
@@ -30,7 +32,7 @@ public class Shell extends Sort {
 
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
-        System.out.println(a);
+        System.out.println(Arrays.toString(a));
         sort(a);
         assert isSorted(a);
         show(a);
