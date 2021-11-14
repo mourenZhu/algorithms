@@ -1,4 +1,4 @@
-package algorithms.sort;
+package cn.zhumouren.algorithms.sort;
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdRandom;
@@ -20,8 +20,20 @@ public class Quick extends Sort {
 
     public static void sort(Comparable[] a) {
         StdRandom.shuffle(a);
-//        sort(a, 0, a.length - 1);
-        sortImprove(a, 0, a.length - 1);
+        sort(a, SortType.QUICK_DEFAULT);
+    }
+
+    public static void sort(Comparable[] a, SortType type) {
+        switch (type) {
+            case QUICK_DEFAULT:
+                sort(a, 0, a.length - 1);
+                break;
+            case QUICK_TO_INSERTION:
+                sortToInsertion(a, 0, a.length - 1);
+                break;
+            default:
+                break;
+        }
     }
 
     private static void sort(Comparable[] a, int lo, int hi) {
@@ -34,20 +46,20 @@ public class Quick extends Sort {
     }
 
     /**
-     * 改进版快速排序
+     * 改进版快速排序，当数组较小时，切换到插入排序。
      *
      * @param a
      * @param lo
      * @param hi
      */
-    private static void sortImprove(Comparable[] a, int lo, int hi) {
+    private static void sortToInsertion(Comparable[] a, int lo, int hi) {
         if (hi <= lo + M) {
             Insertion.sort(a, lo, hi);
             return;
         }
         int j = partition(a, lo, hi);
-        sortImprove(a, lo, j - 1);
-        sortImprove(a, j + 1, hi);
+        sortToInsertion(a, lo, j - 1);
+        sortToInsertion(a, j + 1, hi);
     }
 
     /**

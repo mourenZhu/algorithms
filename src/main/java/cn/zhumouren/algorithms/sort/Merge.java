@@ -1,4 +1,4 @@
-package algorithms.sort;
+package cn.zhumouren.algorithms.sort;
 
 /**
  * @author mourenZhu
