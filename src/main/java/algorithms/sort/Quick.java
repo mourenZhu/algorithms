@@ -12,9 +12,16 @@ import java.util.Arrays;
  * @date 2021/11/13 16:54
  **/
 public class Quick extends Sort {
+
+    /**
+     * 当数组长度小于等于这个值时，改用插入排序可以提高排序速度
+     */
+    private static final int M = 8;
+
     public static void sort(Comparable[] a) {
         StdRandom.shuffle(a);
-        sort(a, 0, a.length - 1);
+//        sort(a, 0, a.length - 1);
+        sortImprove(a, 0, a.length - 1);
     }
 
     private static void sort(Comparable[] a, int lo, int hi) {
@@ -27,6 +34,25 @@ public class Quick extends Sort {
     }
 
     /**
+     * 改进版快速排序
+     *
+     * @param a
+     * @param lo
+     * @param hi
+     */
+    private static void sortImprove(Comparable[] a, int lo, int hi) {
+        if (hi <= lo + M) {
+            Insertion.sort(a, lo, hi);
+            return;
+        }
+        int j = partition(a, lo, hi);
+        sortImprove(a, lo, j - 1);
+        sortImprove(a, j + 1, hi);
+    }
+
+    /**
+     * 划分并获取中间值
+     *
      * @param a
      * @param lo
      * @param hi
@@ -50,14 +76,15 @@ public class Quick extends Sort {
                     break;
                 }
             }
-            //
+            // 判断数组是否已全部遍历
             if (i >= j) {
                 break;
             }
             exch(a, i, j);
         }
-        //
+        // 把v放入正确的位置
         exch(a, lo, j);
+        // a[lo...j-1] <= a[j] <= a[j+1...hi]达成
         return j;
     }
 
