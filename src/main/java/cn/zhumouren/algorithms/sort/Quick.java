@@ -1,9 +1,6 @@
 package cn.zhumouren.algorithms.sort;
 
-import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdRandom;
-
-import java.util.Arrays;
 
 /**
  * @author mourenZhu
@@ -100,11 +97,4 @@ public class Quick extends Sort {
         return j;
     }
 
-    public static void main(String[] args) {
-        String[] a = StdIn.readAllStrings();
-        System.out.println(Arrays.toString(a));
-        sort(a);
-        assert isSorted(a);
-        show(a);
-    }
 }

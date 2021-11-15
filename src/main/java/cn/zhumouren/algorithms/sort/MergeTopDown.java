@@ -30,11 +30,4 @@ public class MergeTopDown extends Merge {
         merge(a, lo, mid, hi);
     }
 
-    public static void main(String[] args) {
-        String[] a = StdIn.readAllStrings();
-        System.out.println(Arrays.toString(a));
-        sort(a);
-        assert isSorted(a);
-        show(a);
-    }
 }

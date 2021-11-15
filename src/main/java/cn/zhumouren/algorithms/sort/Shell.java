@@ -30,11 +30,4 @@ public class Shell extends Sort {
         }
     }
 
-    public static void main(String[] args) {
-        String[] a = StdIn.readAllStrings();
-        System.out.println(Arrays.toString(a));
-        sort(a);
-        assert isSorted(a);
-        show(a);
-    }
 }
