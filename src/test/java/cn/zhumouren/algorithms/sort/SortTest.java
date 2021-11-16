@@ -1,5 +1,6 @@
 package cn.zhumouren.algorithms.sort;
 
+import cn.zhumouren.algorithms.sort.impl.MaxPriorityQueueDisorder;
 import cn.zhumouren.algorithms.utils.StdIn;
 import org.junit.jupiter.api.Test;
 
@@ -100,6 +101,25 @@ public class SortTest {
             Sort.sort(a, SortType.QUICK_TO_INSERTION);
             assert Sort.isSorted(a);
             Sort.show(a);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void MaxPriorityQueueDisorderTest() {
+        try {
+            String[] a;
+            String path = ClassLoader.getSystemClassLoader().getResource("array-test.txt").getPath().substring(1);
+            a = StdIn.readAllStringsByFile(path);
+            System.out.println(Arrays.toString(a));
+            PriorityQueue queue = new MaxPriorityQueueDisorder(a);
+            queue.show();
+            queue.delPriorVal();
+            queue.show();
+            queue.delPriorVal();
+            queue.delPriorVal();
+            queue.show();
         } catch (IOException e) {
             e.printStackTrace();
         }

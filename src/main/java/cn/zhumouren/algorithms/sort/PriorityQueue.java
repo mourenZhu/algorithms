@@ -42,4 +42,9 @@ public interface PriorityQueue<Key extends Comparable<Key>> {
      */
     int size();
 
+    /**
+     * 控制台打印
+     */
+    void show();
+
 }
