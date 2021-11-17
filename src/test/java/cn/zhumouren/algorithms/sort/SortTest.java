@@ -1,5 +1,6 @@
 package cn.zhumouren.algorithms.sort;
 
+import cn.zhumouren.algorithms.sort.impl.MaxPriorityQueueBinaryHeap;
 import cn.zhumouren.algorithms.sort.impl.MaxPriorityQueueDisorder;
 import cn.zhumouren.algorithms.utils.StdIn;
 import org.junit.jupiter.api.Test;
@@ -114,6 +115,28 @@ public class SortTest {
             a = StdIn.readAllStringsByFile(path);
             System.out.println(Arrays.toString(a));
             PriorityQueue queue = new MaxPriorityQueueDisorder(a);
+            queue.show();
+            queue.delPriorVal();
+            queue.show();
+            queue.delPriorVal();
+            queue.delPriorVal();
+            queue.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void MaxPriorityQueueBinaryHeapTest() {
+        try {
+            String[] a;
+            String path = ClassLoader.getSystemClassLoader().getResource("array-test.txt").getPath().substring(1);
+            a = StdIn.readAllStringsByFile(path);
+            System.out.println(Arrays.toString(a));
+            PriorityQueue queue = new MaxPriorityQueueBinaryHeap(a.length);
+            for (int i = 0; i < a.length; i++) {
+                queue.insert(a[i]);
+            }
             queue.show();
             queue.delPriorVal();
             queue.show();
