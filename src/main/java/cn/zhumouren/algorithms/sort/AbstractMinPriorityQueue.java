@@ -1,7 +1,5 @@
 package cn.zhumouren.algorithms.sort;
 
-import cn.zhumouren.algorithms.sort.PriorityQueue;
-
 /**
  * @author mourenZhu
  * @version 1.0

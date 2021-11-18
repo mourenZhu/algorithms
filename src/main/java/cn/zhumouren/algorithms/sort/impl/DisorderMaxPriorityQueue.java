@@ -10,23 +10,30 @@ import cn.zhumouren.algorithms.sort.Sort;
  * @date 2021/11/15 9:02
  **/
 public class DisorderMaxPriorityQueue<Key extends Comparable<Key>> extends AbstractMaxPriorityQueue {
+
+    private Key[] data;
+
+    /**
+     * 使用的数据长度
+     */
+    private int length;
+
     /**
      * 最大值索引
      */
     private int maxIndex = -1;
 
+    private DisorderMaxPriorityQueue() {
 
-    public DisorderMaxPriorityQueue() {
-        data = new Comparable[0];
     }
 
     public DisorderMaxPriorityQueue(int max) {
-        data = new Comparable[max];
+        data = (Key[]) new Comparable[max];
         System.out.println(this);
     }
 
     public DisorderMaxPriorityQueue(Comparable[] a) {
-        data = new Comparable[a.length];
+        data = (Key[]) new Comparable[a.length];
         System.arraycopy(a, 0, data, 0, a.length);
         length = a.length - 1;
     }
@@ -34,17 +41,17 @@ public class DisorderMaxPriorityQueue<Key extends Comparable<Key>> extends Abstr
     @Override
     public void insert(Comparable comparable) {
         if (length < data.length - 1) {
-            data[length++] = comparable;
+            data[length++] = (Key) comparable;
         }
     }
 
     @Override
     public Key getPriorVal() {
         if (maxIndex != -1) {
-            return (Key) data[maxIndex];
+            return data[maxIndex];
         }
         maxIndex = getMaxPoint();
-        return (Key) data[maxIndex];
+        return data[maxIndex];
     }
 
     @Override

@@ -7,12 +7,6 @@ package cn.zhumouren.algorithms.sort;
  * @date 2021/11/14 17:12
  **/
 public abstract class AbstractMaxPriorityQueue<Key extends Comparable<Key>> implements PriorityQueue {
-    protected Key[] data;
-
-    /**
-     * 使用的数据长度
-     */
-    protected int length;
 
     public AbstractMaxPriorityQueue() {
     }

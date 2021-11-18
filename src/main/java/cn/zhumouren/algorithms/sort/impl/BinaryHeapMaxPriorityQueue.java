@@ -10,24 +10,42 @@ import cn.zhumouren.algorithms.sort.AbstractMaxPriorityQueue;
  **/
 public class BinaryHeapMaxPriorityQueue<Key extends Comparable<Key>> extends AbstractMaxPriorityQueue {
 
+    private Key[] data;
+
+    /**
+     * 使用的数据长度
+     */
+    private int length;
+
+    public BinaryHeapMaxPriorityQueue(Comparable[] a) {
+        data = (Key[]) new Comparable[a.length + 1];
+        for (int i = 0; i < length; i++) {
+            insert(a[i]);
+        }
+    }
+
+    private BinaryHeapMaxPriorityQueue() {
+        super();
+    }
+
     public BinaryHeapMaxPriorityQueue(int max) {
-        data = new Comparable[max + 1];
+        data = (Key[]) new Comparable[max + 1];
     }
 
     @Override
     public void insert(Comparable v) {
-        data[++length] = v;
+        data[++length] = (Key) v;
         swim(length);
     }
 
     @Override
     public Key getPriorVal() {
-        return (Key) data[1];
+        return data[1];
     }
 
     @Override
     public Key delPriorVal() {
-        Key max = (Key) data[1];
+        Key max = data[1];
         exch(1, length--);
         // 防止对象游离
         data[length + 1] = null;
@@ -59,7 +77,7 @@ public class BinaryHeapMaxPriorityQueue<Key extends Comparable<Key>> extends Abs
     }
 
     private void exch(int i, int j) {
-        Key t = (Key) data[i];
+        Key t = data[i];
         data[i] = data[j];
         data[j] = t;
     }
