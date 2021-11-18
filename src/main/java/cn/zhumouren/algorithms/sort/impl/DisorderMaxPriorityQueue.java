@@ -13,11 +13,8 @@ public class DisorderMaxPriorityQueue<Key extends Comparable<Key>> extends Abstr
     /**
      * 最大值索引
      */
-    private int maxPoint = -1;
-    /**
-     * 队列长度的索引
-     */
-    private int lengthPoint = 0;
+    private int maxIndex = -1;
+
 
     public DisorderMaxPriorityQueue() {
         data = new Comparable[0];
@@ -31,37 +28,37 @@ public class DisorderMaxPriorityQueue<Key extends Comparable<Key>> extends Abstr
     public DisorderMaxPriorityQueue(Comparable[] a) {
         data = new Comparable[a.length];
         System.arraycopy(a, 0, data, 0, a.length);
-        lengthPoint = a.length - 1;
+        length = a.length - 1;
     }
 
     @Override
     public void insert(Comparable comparable) {
-        if (lengthPoint < data.length - 1) {
-            data[lengthPoint++] = comparable;
+        if (length < data.length - 1) {
+            data[length++] = comparable;
         }
     }
 
     @Override
     public Key getPriorVal() {
-        if (maxPoint != -1) {
-            return (Key) data[maxPoint];
+        if (maxIndex != -1) {
+            return (Key) data[maxIndex];
         }
-        maxPoint = getMaxPoint();
-        return (Key) data[maxPoint];
+        maxIndex = getMaxPoint();
+        return (Key) data[maxIndex];
     }
 
     @Override
     public Key delPriorVal() {
-        if (lengthPoint == 0) {
+        if (length == 0) {
             return null;
         }
-        if (maxPoint == -1) {
-            maxPoint = getMaxPoint();
+        if (maxIndex == -1) {
+            maxIndex = getMaxPoint();
         }
-        Comparable max = data[maxPoint];
-        Sort.exch(data, maxPoint, lengthPoint);
-        lengthPoint--;
-        maxPoint = -1;
+        Comparable max = data[maxIndex];
+        Sort.exch(data, maxIndex, length);
+        length--;
+        maxIndex = -1;
         return (Key) max;
     }
 
@@ -73,12 +70,12 @@ public class DisorderMaxPriorityQueue<Key extends Comparable<Key>> extends Abstr
 
     @Override
     public int size() {
-        return lengthPoint;
+        return length;
     }
 
     @Override
     public void show() {
-        for (int i = 0; i <= lengthPoint; i++) {
+        for (int i = 0; i <= length; i++) {
             System.out.printf(data[i] + " ");
         }
         System.out.println();
@@ -86,7 +83,7 @@ public class DisorderMaxPriorityQueue<Key extends Comparable<Key>> extends Abstr
 
     private int getMaxPoint() {
         int mp = 0;
-        for (int i = 1; i <= lengthPoint; i++) {
+        for (int i = 1; i <= length; i++) {
             if (Sort.less(data[mp], data[i])) {
                 mp = i;
             }

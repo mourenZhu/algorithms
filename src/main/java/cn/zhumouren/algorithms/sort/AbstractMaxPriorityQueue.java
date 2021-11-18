@@ -9,6 +9,11 @@ package cn.zhumouren.algorithms.sort;
 public abstract class AbstractMaxPriorityQueue<Key extends Comparable<Key>> implements PriorityQueue {
     protected Key[] data;
 
+    /**
+     * 使用的数据长度
+     */
+    protected int length;
+
     public AbstractMaxPriorityQueue() {
     }
 

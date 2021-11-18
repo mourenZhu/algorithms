@@ -10,19 +10,14 @@ import cn.zhumouren.algorithms.sort.AbstractMaxPriorityQueue;
  **/
 public class BinaryHeapMaxPriorityQueue<Key extends Comparable<Key>> extends AbstractMaxPriorityQueue {
 
-    /**
-     * 堆的长度
-     */
-    private int N = 0;
-
     public BinaryHeapMaxPriorityQueue(int max) {
         data = new Comparable[max + 1];
     }
 
     @Override
     public void insert(Comparable v) {
-        data[++N] = v;
-        swim(N);
+        data[++length] = v;
+        swim(length);
     }
 
     @Override
@@ -33,9 +28,9 @@ public class BinaryHeapMaxPriorityQueue<Key extends Comparable<Key>> extends Abs
     @Override
     public Key delPriorVal() {
         Key max = (Key) data[1];
-        exch(1, N--);
+        exch(1, length--);
         // 防止对象游离
-        data[N + 1] = null;
+        data[length + 1] = null;
         // 恢复有序
         sink(1);
         return max;
@@ -43,17 +38,17 @@ public class BinaryHeapMaxPriorityQueue<Key extends Comparable<Key>> extends Abs
 
     @Override
     public boolean isEmpty() {
-        return N == 0;
+        return length == 0;
     }
 
     @Override
     public int size() {
-        return N;
+        return length;
     }
 
     @Override
     public void show() {
-        for (int i = 1; i < N; i++) {
+        for (int i = 1; i < length; i++) {
             System.out.print(data[i] + " ");
         }
         System.out.println();
@@ -88,10 +83,10 @@ public class BinaryHeapMaxPriorityQueue<Key extends Comparable<Key>> extends Abs
      * @param k 当前值索引
      */
     private void sink(int k) {
-        while (2 * k <= N) {
+        while (2 * k <= length) {
             int j = 2 * k;
             // 判断该层哪个子节点比较大
-            if (j < N && less(j, j + 1)) {
+            if (j < length && less(j, j + 1)) {
                 j++;
             }
             // 判断是否比最大的子节点还大
