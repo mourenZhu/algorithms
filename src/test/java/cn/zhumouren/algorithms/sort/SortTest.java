@@ -1,7 +1,7 @@
 package cn.zhumouren.algorithms.sort;
 
-import cn.zhumouren.algorithms.sort.impl.MaxPriorityQueueBinaryHeap;
-import cn.zhumouren.algorithms.sort.impl.MaxPriorityQueueDisorder;
+import cn.zhumouren.algorithms.sort.impl.BinaryHeapMaxPriorityQueue;
+import cn.zhumouren.algorithms.sort.impl.DisorderMaxPriorityQueue;
 import cn.zhumouren.algorithms.utils.StdIn;
 import org.junit.jupiter.api.Test;
 
@@ -108,13 +108,13 @@ public class SortTest {
     }
 
     @Test
-    public void MaxPriorityQueueDisorderTest() {
+    public void DisorderMaxPriorityQueueTest() {
         try {
             String[] a;
             String path = ClassLoader.getSystemClassLoader().getResource("array-test.txt").getPath().substring(1);
             a = StdIn.readAllStringsByFile(path);
             System.out.println(Arrays.toString(a));
-            PriorityQueue queue = new MaxPriorityQueueDisorder(a);
+            PriorityQueue queue = new DisorderMaxPriorityQueue(a);
             queue.show();
             queue.delPriorVal();
             queue.show();
@@ -127,13 +127,13 @@ public class SortTest {
     }
 
     @Test
-    public void MaxPriorityQueueBinaryHeapTest() {
+    public void BinaryHeapMaxPriorityQueueTest() {
         try {
             String[] a;
             String path = ClassLoader.getSystemClassLoader().getResource("array-test.txt").getPath().substring(1);
             a = StdIn.readAllStringsByFile(path);
             System.out.println(Arrays.toString(a));
-            PriorityQueue queue = new MaxPriorityQueueBinaryHeap(a.length);
+            PriorityQueue queue = new BinaryHeapMaxPriorityQueue(a.length);
             for (int i = 0; i < a.length; i++) {
                 queue.insert(a[i]);
             }

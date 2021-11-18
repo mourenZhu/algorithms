@@ -8,14 +8,14 @@ import cn.zhumouren.algorithms.sort.AbstractMaxPriorityQueue;
  * @description 基于二叉堆的优先队列
  * @date 2021/11/17 10:45
  **/
-public class MaxPriorityQueueBinaryHeap<Key extends Comparable<Key>> extends AbstractMaxPriorityQueue {
+public class BinaryHeapMaxPriorityQueue<Key extends Comparable<Key>> extends AbstractMaxPriorityQueue {
 
     /**
      * 堆的长度
      */
     private int N = 0;
 
-    public MaxPriorityQueueBinaryHeap(int max) {
+    public BinaryHeapMaxPriorityQueue(int max) {
         data = new Comparable[max + 1];
     }
 

@@ -9,7 +9,7 @@ import cn.zhumouren.algorithms.sort.Sort;
  * @description 最大值优先队列-无序
  * @date 2021/11/15 9:02
  **/
-public class MaxPriorityQueueDisorder<Key extends Comparable<Key>> extends AbstractMaxPriorityQueue {
+public class DisorderMaxPriorityQueue<Key extends Comparable<Key>> extends AbstractMaxPriorityQueue {
     /**
      * 最大值索引
      */
@@ -19,16 +19,16 @@ public class MaxPriorityQueueDisorder<Key extends Comparable<Key>> extends Abstr
      */
     private int lengthPoint = 0;
 
-    public MaxPriorityQueueDisorder() {
+    public DisorderMaxPriorityQueue() {
         data = new Comparable[0];
     }
 
-    public MaxPriorityQueueDisorder(int max) {
+    public DisorderMaxPriorityQueue(int max) {
         data = new Comparable[max];
         System.out.println(this);
     }
 
-    public MaxPriorityQueueDisorder(Comparable[] a) {
+    public DisorderMaxPriorityQueue(Comparable[] a) {
         data = new Comparable[a.length];
         System.arraycopy(a, 0, data, 0, a.length);
         lengthPoint = a.length - 1;
